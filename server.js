@@ -2,6 +2,7 @@ require('dotenv').config(); // Import dotenv để đọc file .env
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 4000; // Lấy PORT từ .env hoặc dùng 4000 mặc định
@@ -16,6 +17,8 @@ mongoose.connect(process.env.MONGODB_URI, {
 
 // Middleware
 app.use(bodyParser.json());
+app.use(cors());
+
 
 // Khởi tạo Schema và Model cho sinh viên
 const studentSchema = new mongoose.Schema({
